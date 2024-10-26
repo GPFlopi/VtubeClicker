@@ -1,0 +1,36 @@
+/*  vtuber dropdown styles  */
+
+.dropLabel {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Initially hide the buttons */
+.dropdown-content {
+    position: absolute;
+    border: #dcff00 solid 1.5px;
+    background-color: #242424;
+    left: 6%;
+    display: none;
+}
+
+.dropItem {
+    background-color: aquamarine;
+    color: black;
+
+}
+
+.checkbox{
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    left: 3%;
+}
+
+/* When the checkbox is checked, show the buttons */
+#toggleCheckbox:checked + .dropLabel + .dropdown-content {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    padding: 10px;
+    filter: drop-shadow(0 0 1em #e7fb6f);
+}

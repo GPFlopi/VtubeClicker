@@ -1,0 +1,112 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+
+/*  Logo styles  */
+
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+}
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+/*  Image Styles  */
+
+.fade_in{
+    position: absolute;
+    transition: opacity 2s ease-in-out;
+    pointer-events: none;
+}
+
+/*  Ability Card Styles  */
+
+.card {
+    position: absolute;
+    width: 200px;
+    height: 600px;
+    border-radius: 14px;
+    z-index: 1111;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 60px #0048ff;
+    right: 10px;
+    top: 10px;
+;
+}
+
+.bg {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 190px;
+    height: 590px;
+    z-index: 2;
+    background: #242424;
+    /*backdrop-filter: blur(24px);*/
+    border-radius: 10px;
+    overflow: hidden;
+    outline: 2px solid #0033ff;
+    opacity: 1;
+}
+
+.blob {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 600px;
+    border-radius: 50%;
+    background-color: #00ffff;
+    opacity: 1;
+    filter: blur(12px);
+    animation: blob-bounce 5s infinite ease;
+}
+
+@keyframes blob-bounce {
+    0% {
+        transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+
+    25% {
+        transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+    }
+
+    50% {
+        transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+    }
+
+    75% {
+        transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+    }
+
+    100% {
+        transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+}
+
+/*  Total Count Style  */
+
+.total-count {
+    position: fixed;
+    bottom: 5px;
+    left: 10px;
+    margin: 10px;
+    font-size: 16px;
+    color: white;
+    /*padding: 5px; !* Optional padding *!*/
+}

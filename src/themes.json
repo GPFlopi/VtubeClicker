@@ -1,0 +1,15 @@
+{
+  "testTheme": {
+    "colors": {
+      "button_after_bgColor": "#91C9FF",
+      "Cdropdown-content_border": " "
+    }
+  },
+  "testTheme2": {
+    "colors": {
+      "button_after_bgColor": "#0000FF",
+      "Cdropdown-content_border": " #91C9FF solid 3px"
+
+    }
+  }
+}
