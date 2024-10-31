@@ -1,4 +1,5 @@
-
+import {Profile} from "./Profile";
+import React from "react";
 
 export interface minionImageData {
     id: number;
@@ -8,4 +9,34 @@ export interface minionImageData {
     height: number;
     opacity: number;
     transition: string;
+}
+
+
+export interface Context_props {
+    profile: Profile
+    setProfile: React.Dispatch<React.SetStateAction<Profile>>
+    images: minionImageData[];
+    setImages: React.Dispatch<React.SetStateAction<minionImageData[]>>;
+    setCurrentTheme: React.Dispatch<React.SetStateAction<string>>
+}
+
+export interface Theme {
+    colors: {
+        bg_shadow: string;
+    };
+}
+
+export interface Themes {
+    [key: string]: Theme;
+}
+
+export interface ButtonProps {
+    profile: Profile;
+}
+
+export interface ItemListProps {
+    items: string[];
+    box_top:string;
+    cont_top:string;
+    theme:React.Dispatch<React.SetStateAction<string>>
 }

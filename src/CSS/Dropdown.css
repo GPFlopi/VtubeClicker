@@ -8,7 +8,7 @@
 /* Initially hide the buttons */
 .dropdown-content {
     position: absolute;
-    border: #dcff00 solid 1.5px;
+    border: var(--bg_shadow,white) solid 1.5px;
     background-color: #242424;
     left: 6%;
     display: none;
@@ -30,7 +30,8 @@
 /* When the checkbox is checked, show the buttons */
 #toggleCheckbox:checked + .dropLabel + .dropdown-content {
     display: grid;
+    gap: 3px;
     grid-template-columns: repeat(5, auto);
     padding: 10px;
-    filter: drop-shadow(0 0 1em #e7fb6f);
+    filter: drop-shadow(0 0 1em var(--bg_shadow, white));
 }

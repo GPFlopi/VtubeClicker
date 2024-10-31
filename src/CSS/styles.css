@@ -14,11 +14,9 @@
     will-change: filter;
     transition: filter 300ms;
 }
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
+
 .logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
+    filter: drop-shadow(0 0 3em var(--bg_shadow, white));
 }
 
 /*  Image Styles  */
@@ -42,7 +40,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 1px 1px 60px #0048ff;
+    box-shadow: 1px 1px 60px var(--bg_shadow, white);
     right: 10px;
     top: 10px;
 ;
@@ -59,7 +57,7 @@
     /*backdrop-filter: blur(24px);*/
     border-radius: 10px;
     overflow: hidden;
-    outline: 2px solid #0033ff;
+    outline: 2px solid var(--bg_shadow,white);
     opacity: 1;
 }
 
@@ -71,7 +69,7 @@
     width: 200px;
     height: 600px;
     border-radius: 50%;
-    background-color: #00ffff;
+    background-color: var(--bg_shadow, white);
     opacity: 1;
     filter: blur(12px);
     animation: blob-bounce 5s infinite ease;

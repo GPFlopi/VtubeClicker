@@ -1,15 +1,32 @@
 {
-  "testTheme": {
+  "Cecilia": {
     "colors": {
-      "button_after_bgColor": "#91C9FF",
-      "Cdropdown-content_border": " "
+      "bg_shadow": "#96f344"
     }
   },
-  "testTheme2": {
+  "Laimu": {
     "colors": {
-      "button_after_bgColor": "#0000FF",
-      "Cdropdown-content_border": " #91C9FF solid 3px"
-
+      "bg_shadow": "#b9e545"
+    }
+  },
+  "Neuro": {
+    "colors": {
+      "bg_shadow": "#dee545"
+    }
+  },
+  "Evil": {
+    "colors": {
+      "bg_shadow": "#f35444"
+    }
+  },
+  "Shoomimi": {
+    "colors": {
+      "bg_shadow": "#45e5bc"
+    }
+  },
+  "Raora": {
+    "colors": {
+      "bg_shadow": "#f719fe"
     }
   }
 }

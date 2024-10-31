@@ -2,19 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import * as Utils from './utils.ts';
 import './CSS/Dropdown.css'
+import {ButtonProps, ItemListProps} from "./interfaces";
 
-interface ButtonProps {
-    setLocalCount: React.Dispatch<React.SetStateAction<number>>;
-    upgrades:[string, string, number][];
-}
 
-interface ItemListProps {
-    items: string[];
-    box_top:string;
-    cont_top:string;
-}
 
-export const dropdown:React.FC<ItemListProps> = ({items,box_top,cont_top}) => {
+
+export const dropdown:React.FC<ItemListProps> = ({items,box_top,cont_top,theme}) => {
     return (
         <>
             <input className="checkbox" style={{ top: box_top }} type="checkbox" id="toggleCheckbox"/>
@@ -22,21 +15,21 @@ export const dropdown:React.FC<ItemListProps> = ({items,box_top,cont_top}) => {
 
             <div className="dropdown-content" style={{ top: cont_top }}>
                 {items.map((item:string, index:number) => (
-                    <button key={index} className="dropItem">{item}</button>
+                    <button key={index} className="dropItem" onClick={()=>Utils.setTheme(item,theme)}>{item}</button>
                 ))}
             </div>
         </>
     );
 };
 
-export const Ubutton: React.FC<ButtonProps> = ({setLocalCount,upgrades}) => {
+export const Ubutton: React.FC<ButtonProps> = ({profile}) => {
     return (
         <>
-            {upgrades.map((item:[string, string, number], index:number) => (
+            {profile.upgrades.map((item:[string, string, number], index:number) => (
                 <>
                     <StyledWrapper>
-                        <button key={index} onClick={() => Utils.decLocalCount(item[2],setLocalCount)}>
-                            <span key={index} className="text">{item[0]}</span>
+                        <button key={index} onClick={() => profile.decLocalCount(item[2])}>
+                            <span className="text">{item[0]}</span>
                             <span key={index}>{item[1]}</span>
                         </button>
                     </StyledWrapper>

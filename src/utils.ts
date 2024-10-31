@@ -1,26 +1,28 @@
 import React from "react";
 import * as Intf from "./interfaces.ts"
+import themesData from "./themes.json" assert {type: 'json'};
+import Profile from "./Profile";
 
-export function buttonClicked(num:number,setLocalCount:React.Dispatch<React.SetStateAction<number>>,
-                              setTotalCount:React.Dispatch<React.SetStateAction<number>>){
-    incLocalCount(num,setLocalCount)
-    setTotalCount((TotalCount) => TotalCount + num )
+
+const themes: Intf.Themes = themesData
+
+export function setTheme(themeName:string,setCurrentTheme:React.Dispatch<React.SetStateAction<string>>){
+    const theme = themes[themeName]; // No more TypeScript error here
+    if (theme && theme.colors) {
+        Object.keys(theme.colors).forEach((key) => {
+            document.documentElement.style.setProperty(`--${key}`, theme.colors[key as keyof typeof theme.colors]);
+        });
+        setCurrentTheme(themeName);
+    }
+    console.log("Theme set:" + themeName)
+};
+
+export function ButtonClicked(profile:Profile){
+    profile.incLocalCount()
+    SpawnImage(profile)
 }
 
-export function incLocalCount(num: number,setLocalCount:React.Dispatch<React.SetStateAction<number>>){
-    setLocalCount((LocalCount) => LocalCount + num );
-}
-
-export function decLocalCount(num:number,setLocalCount:React.Dispatch<React.SetStateAction<number>>){
-    setLocalCount((LocalCount) => {
-        if((LocalCount - num) >= 0)
-            return LocalCount - num
-        else
-            return LocalCount
-    });
-}
-
-export function spawnImage(setImages:React.Dispatch<React.SetStateAction<Intf.minionImageData[]>>) {
+export function SpawnImage(profile:Profile) {
 
     const randomTop = Math.floor(Math.random() * window.innerHeight);
     const randomLeft = Math.floor(Math.random() * window.innerWidth);
@@ -36,10 +38,10 @@ export function spawnImage(setImages:React.Dispatch<React.SetStateAction<Intf.mi
         transition: "opacity 2s ease-in",
     };
 
-    setImages(prevImages => [...prevImages, newImage]);
+    profile.setImages(prevImages => [...prevImages, newImage]);
 
     setTimeout(() => {
-        setImages(prevImages =>
+        profile.setImages(prevImages =>
             prevImages.map(image =>
                 image.id === newImage.id ? { ...image, opacity: 1 } : image
             )
@@ -47,7 +49,7 @@ export function spawnImage(setImages:React.Dispatch<React.SetStateAction<Intf.mi
     }, 50);
 
     setTimeout(() => {
-        setImages(prevImages =>
+        profile.setImages(prevImages =>
             prevImages.map(image =>
                 image.id === newImage.id ? { ...image, opacity: 0 } : image
             )
@@ -55,7 +57,7 @@ export function spawnImage(setImages:React.Dispatch<React.SetStateAction<Intf.mi
     }, 2500);
 
     setTimeout(() => {
-        setImages(prevImages => prevImages.filter(image => image.id !== newImage.id));
+        profile.setImages(prevImages => prevImages.filter(image => image.id !== newImage.id));
     }, 5000);
 
 };
