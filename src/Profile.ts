@@ -5,6 +5,7 @@ export class Profile{
 
     //region parameters
     private _Localcount: number;
+    private setLocalCount:React.Dispatch<React.SetStateAction<number>>
     private _TotalCount: number;
     private incNumber: number;
 
@@ -22,7 +23,10 @@ export class Profile{
 //endregion
 
 
-    constructor(images:minionImageData[],setImages:React.Dispatch<React.SetStateAction<minionImageData[]>>){
+    constructor(images:minionImageData[],
+                setImages:React.Dispatch<React.SetStateAction<minionImageData[]>>,
+                setLocalCount:React.Dispatch<React.SetStateAction<number>>){
+        this.setLocalCount = setLocalCount;
         this._Localcount = 0;
         this._TotalCount = 0;
         this.incNumber = 1;
@@ -32,11 +36,14 @@ export class Profile{
 
     incLocalCount(){
         this._Localcount = this._Localcount + this.incNumber;
+        this.setLocalCount(this._Localcount);
         this._TotalCount = this._TotalCount + this.incNumber;
     }
     decLocalCount(decNumber:number){
-        if((this._Localcount - decNumber) >= 0)
+        if((this._Localcount - decNumber) >= 0) {
             this._Localcount = this._Localcount - decNumber;
+            this.setLocalCount(this._Localcount);
+        }
     }
 
 //region getter-setter
@@ -52,7 +59,6 @@ export class Profile{
     get upgrades(): [string, string, number][] {
         return this._upgrades;
     }
-
 
     get Localcount(): number {
         return this._Localcount;

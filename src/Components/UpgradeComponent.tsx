@@ -1,41 +1,25 @@
 import React from "react";
+import {ProfileProp} from "../interfaces";
 import styled from "styled-components";
-import * as Utils from './utils.ts';
-import './CSS/Dropdown.css'
-import {ButtonProps, ItemListProps} from "./interfaces";
 
 
-
-
-export const dropdown:React.FC<ItemListProps> = ({items,box_top,cont_top,theme}) => {
+export const UpgradeComponent: React.FC<ProfileProp> = ({profile}) => {
     return (
-        <>
-            <input className="checkbox" style={{ top: box_top }} type="checkbox" id="toggleCheckbox"/>
-            <label className="dropLabel" htmlFor="toggleCheckbox"></label>
-
-            <div className="dropdown-content" style={{ top: cont_top }}>
-                {items.map((item:string, index:number) => (
-                    <button key={index} className="dropItem" onClick={()=>Utils.setTheme(item,theme)}>{item}</button>
-                ))}
+        <div>
+            <div className="card">
+                <div className="bg">
+                    {profile.upgrades.map((item: [string, string, number], index: number) => (
+                        <StyledWrapper key={index}>
+                            <button key={index + 1} onClick={() => profile.decLocalCount(item[2])}>
+                                <span key={index+2} className="text">{item[0]}</span>
+                                <span key={index+3}>{item[1]}</span>
+                            </button>
+                        </StyledWrapper>
+                    ))}
+                </div>
+                <div className="blob"></div>
             </div>
-        </>
-    );
-};
-
-export const Ubutton: React.FC<ButtonProps> = ({profile}) => {
-    return (
-        <>
-            {profile.upgrades.map((item:[string, string, number], index:number) => (
-                <>
-                    <StyledWrapper>
-                        <button key={index} onClick={() => profile.decLocalCount(item[2])}>
-                            <span className="text">{item[0]}</span>
-                            <span key={index}>{item[1]}</span>
-                        </button>
-                    </StyledWrapper>
-                </>
-            ))}
-        </>
+        </div>
     );
 };
 
@@ -106,8 +90,8 @@ button:hover span:last-child {
     transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
     font-size: 75%;
     text-align: center;
-}
-`;
+}`;
 
 
+export default UpgradeComponent;
 

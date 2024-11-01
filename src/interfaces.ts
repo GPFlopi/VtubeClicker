@@ -30,7 +30,7 @@ export interface Themes {
     [key: string]: Theme;
 }
 
-export interface ButtonProps {
+export interface ProfileProp {
     profile: Profile;
 }
 
