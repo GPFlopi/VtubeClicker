@@ -4,15 +4,23 @@ import styled from "styled-components";
 
 
 export const UpgradeComponent: React.FC<ProfileProp> = ({profile}) => {
+
     return (
         <div>
             <div className="card">
                 <div className="bg">
-                    {profile.upgrades.map((item: [string, string, number], index: number) => (
+                    {profile.upgrades.map((item: [string, string, number,number], index: number) => (
                         <StyledWrapper key={index}>
-                            <button key={index + 1} onClick={() => profile.decLocalCount(item[2])}>
+                            <button key={index + 1} onClick={() => {
+                                    if((profile.Localcount - item[2]) >= 0){
+                                        profile.decLocalCount(item[2]);
+
+                                    }
+                                }
+                            }>
+                                {}
                                 <span key={index+2} className="text">{item[0]}</span>
-                                <span key={index+3}>{item[1]}</span>
+                                <span key={index+3}>{item[1] + " " + item[2]}</span>
                             </button>
                         </StyledWrapper>
                     ))}

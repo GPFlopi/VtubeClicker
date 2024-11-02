@@ -40,3 +40,7 @@ export interface ItemListProps {
     cont_top:string;
     theme:React.Dispatch<React.SetStateAction<string>>
 }
+
+// export interface upgradePreps{
+//     upgrade:[string, string, number,number][]
+// }

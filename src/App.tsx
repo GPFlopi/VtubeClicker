@@ -11,6 +11,10 @@ function App() {
   )
 }
 
+/*
+* TODO
+* - Figure out the cost and increase of upgrades
+* */
 
 export default App
 
