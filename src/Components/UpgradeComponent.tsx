@@ -2,6 +2,17 @@ import React from "react";
 import {ProfileProp} from "../interfaces";
 import styled from "styled-components";
 
+const enabledUpgrade= ():React.CSSProperties =>{
+    return {
+        backgroundColor: "white"
+    }
+}
+
+const disabledUpgrade= ():React.CSSProperties =>{
+    return {
+        backgroundColor: "grey"
+    }
+}
 
 export const UpgradeComponent: React.FC<ProfileProp> = ({profile}) => {
 
@@ -9,15 +20,19 @@ export const UpgradeComponent: React.FC<ProfileProp> = ({profile}) => {
         <div>
             <div className="card">
                 <div className="bg">
-                    {profile.upgrades.map((item: [string, string, number,number], index: number) => (
+                    {profile.upgrades.map((item: [string, string, number,number,boolean], index: number) => (
                         <StyledWrapper key={index}>
                             <button key={index + 1} onClick={() => {
-                                    if((profile.Localcount - item[2]) >= 0){
+                                    if((profile.Localcount - item[2]) >= 0 && item[4]){
                                         profile.decLocalCount(item[2]);
 
+                                        if( (index % 2) == 0)
+                                            item[3] += 999
+                                        else
+                                            console.log("this is a autoClickButton")
                                     }
                                 }
-                            }>
+                            } style={item[4] ? enabledUpgrade() : disabledUpgrade()}>
                                 {}
                                 <span key={index+2} className="text">{item[0]}</span>
                                 <span key={index+3}>{item[1] + " " + item[2]}</span>

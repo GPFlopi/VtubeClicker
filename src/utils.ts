@@ -15,7 +15,7 @@ export function setTheme(themeName:string,setCurrentTheme:React.Dispatch<React.S
         });
         setCurrentTheme(themeName);
     }
-    console.log("Theme set:" + themeName)
+    // console.log("Theme set:" + themeName)
 };
 
 export function ButtonClicked(profile:Profile){
