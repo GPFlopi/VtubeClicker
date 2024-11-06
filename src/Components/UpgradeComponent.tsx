@@ -20,22 +20,21 @@ export const UpgradeComponent: React.FC<ProfileProp> = ({profile}) => {
         <div>
             <div className="card">
                 <div className="bg">
-                    {profile.upgrades.map((item: [string, string, number,number,boolean], index: number) => (
+                    {profile.upgrades.map((item: [string, number,number,boolean], index: number) => (
                         <StyledWrapper key={index}>
                             <button key={index + 1} onClick={() => {
-                                    if((profile.Localcount - item[2]) >= 0 && item[4]){
-                                        profile.decLocalCount(item[2]);
+                                    if((profile.Localcount - item[1]) >= 0 && item[3]){
+                                        profile.decLocalCount(item[1]);
 
-                                        if( (index % 2) == 0)
-                                            item[3] += 999
-                                        else
-                                            console.log("this is a autoClickButton")
+                                        item[1] *= 1.2;
+                                        item[2] *= 1.2;
                                     }
                                 }
-                            } style={item[4] ? enabledUpgrade() : disabledUpgrade()}>
-                                {}
+                            } style={item[3] ? enabledUpgrade() : disabledUpgrade()}>
                                 <span key={index+2} className="text">{item[0]}</span>
-                                <span key={index+3}>{item[1] + " " + item[2]}</span>
+                                <span key={index+3}>{(( (index % 2) == 0) ?
+                                    "This will increase the viewers/click amount\n "
+                                    : "This will increase the viewers/sec amount") }<br/>{item[1]}</span>
                             </button>
                         </StyledWrapper>
                     ))}
@@ -50,18 +49,18 @@ const StyledWrapper = styled.div`
     
     button {
       top: 10px;
-      width: 180px;
+      width: 280px;
+        height: auto;
       position: relative;
       overflow: hidden;
       border: 1px solid #18181a;
       color: #18181a;
       display: inline-block;
-      font-size: 15px;
+      font-size: 17px;
       line-height: 15px;
       padding: 18px 18px 18px;
       text-decoration: none;
-      cursor: pointer;
-      background: #fff;
+      cursor: crosshair;
       font-weight: 800;
       user-select: none;
       -webkit-user-select: none;
@@ -84,8 +83,9 @@ button span:last-child {
     left: 50%;
     bottom: 30%;
     transform: translateY(225%) translateX(-50%);
-    height: 14px;
-    line-height: 13px;
+    height: auto;
+    width: 100%;
+    line-height: normal;
 }
 
 button:after {
@@ -95,7 +95,7 @@ button:after {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #91C9FF;
+  background-color: var(--bg_shadow, white);
   transform-origin: bottom center;
   transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
   transform: skewY(9.3deg) scaleY(0);

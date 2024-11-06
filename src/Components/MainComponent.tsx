@@ -16,26 +16,22 @@ const MainComponent = () => {
             <MainButtonComponent profile={profile}/>
             <UpgradeComponent profile={profile}/>
             <div>
-                {profile.Localcount}
-            </div>
-            <div>
-                <label>
-                    autoClickNum - {profile.autoClickNum}
-                    <br/>
-                    incNumber - {profile.incNumber}
-                    <br/>
-                    MakeCuteNoise - {profile.upgrades[2][4] ? "true" : "false"}
-                    <br/>
-                </label>
-                <button onClick={
-                    () => {
-                        profile.upgrades[2][3]++
-                    }
-                }>Test button
-                </button>
+                {Math.ceil(profile.Localcount)}
             </div>
             <div className={"total-count"}>
-                Total Clicks: {profile.TotalCount}
+                <label>
+                    viewers/minute - {profile.autoClickNum}
+                    <br/>
+                    viewers/click - {profile.incNumber}
+                    <br/>
+                </label>
+                {/*<button onClick={*/}
+                {/*    () => {*/}
+                {/*        profile.upgrades[2][2]++*/}
+                {/*    }*/}
+                {/*}>Test button*/}
+                {/*</button>*/}
+                Total Clicks: {Math.ceil(profile.TotalCount)}
             </div>
         </>
     );
