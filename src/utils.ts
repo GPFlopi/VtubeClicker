@@ -2,7 +2,7 @@ import React from "react";
 import * as Intf from "./interfaces.ts"
 import themesData from "./themes.json" assert {type: 'json'};
 import Profile from "./Profile";
-import soundEffect from "./assets/short_chicken_noise.mp3";
+import soundEffect from "./assets/Talents/Limealicious/click.mp3";
 
 
 const themes: Intf.Themes = themesData
@@ -21,11 +21,11 @@ export function setTheme(themeName:string,setCurrentTheme:React.Dispatch<React.S
 export function ButtonClicked(profile:Profile){
     profile.incLocalCount()
     SpawnImage(profile)
-    playSound()
+    playSound(soundEffect)
 }
 
-const playSound = () => {
-    const audio = new Audio(soundEffect); // Provide the path to your sound file here
+const playSound = (song: string | undefined) => {
+    const audio = new Audio(song);
     audio.play().catch(error => console.error('Error playing audio:', error));
 };
 

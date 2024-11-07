@@ -1,32 +1,42 @@
 {
-  "Cecilia": {
+  "Maid Mint": {
     "colors": {
-      "bg_shadow": "#96f344"
+      "bg_shadow": "#AFFDDC"
     }
   },
-  "Laimu": {
+  "Limealicious": {
     "colors": {
-      "bg_shadow": "#b9e545"
+      "bg_shadow": "#A9B55F"
     }
   },
   "Neuro": {
     "colors": {
-      "bg_shadow": "#dee545"
+      "bg_shadow": "#6BD9D0"
     }
   },
   "Evil": {
     "colors": {
-      "bg_shadow": "#f35444"
+      "bg_shadow": "#B5023A"
     }
   },
   "Shoomimi": {
     "colors": {
-      "bg_shadow": "#45e5bc"
+      "bg_shadow": "#1185A2"
     }
   },
-  "Raora": {
+    "Elia Stellaria": {
     "colors": {
-      "bg_shadow": "#f719fe"
+      "bg_shadow": "#886F97"
     }
+  },
+  "Cecilia Immergreen": {
+    "colors": {
+      "bg_shadow": "#70DD80"
+    }
+  },
+  "PirateSoftware": {
+  "colors": {
+    "bg_shadow": "#2D32C4"
   }
+}
 }

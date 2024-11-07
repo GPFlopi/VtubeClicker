@@ -8,9 +8,15 @@
 
 /*  Logo styles  */
 
+.gameName{
+    /*font-family: "Cursive", "Sans-serif", serif;*/
+    position: relative;
+    top: -50px;
+}
+
 .logo {
-    height: 6em;
-    padding: 1.5em;
+    height: 10em;
+    padding: 3em;
     will-change: filter;
     transition: filter 300ms;
 }

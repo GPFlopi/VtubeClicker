@@ -10,7 +10,7 @@ export class Profile{
     private _incNumber: number;
     private _autoClickNum: number | undefined;
 
-    private _talents:string[]=["Cecilia","Laimu","Neuro","Shoomimi","Evil","Raora"];
+    private _talents:string[]=["Maid Mint","Limealicious","Neuro","Evil","Shoomimi", "Elia Stellaria","Cecilia Immergreen", "PirateSoftware"];
     private _cometics:string[]=["Happy","Sad","Evil","Coomer","Excited","Thinking"];
     /*
     *   Upgrade Name  -  upgrade cost  - click/autoclick increase - enables

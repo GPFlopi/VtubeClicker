@@ -24,7 +24,7 @@ export const UpgradeComponent: React.FC<ProfileProp> = ({profile}) => {
                         <StyledWrapper key={index}>
                             <button key={index + 1} onClick={() => {
                                     if((profile.Localcount - item[1]) >= 0 && item[3]){
-                                        profile.decLocalCount(item[1]);
+                                        profile.decLocalCount(Math.ceil(item[1]));
 
                                         item[1] *= 1.2;
                                         item[2] *= 1.2;
@@ -34,7 +34,7 @@ export const UpgradeComponent: React.FC<ProfileProp> = ({profile}) => {
                                 <span key={index+2} className="text">{item[0]}</span>
                                 <span key={index+3}>{(( (index % 2) == 0) ?
                                     "This will increase the viewers/click amount\n "
-                                    : "This will increase the viewers/sec amount") }<br/>{item[1]}</span>
+                                    : "This will increase the viewers/sec amount") }<br/>{Math.ceil(item[1])}</span>
                             </button>
                         </StyledWrapper>
                     ))}
