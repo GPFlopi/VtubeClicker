@@ -1,6 +1,5 @@
 import React from "react";
 import {ProfileProp} from "../interfaces";
-import minionLogo from "../assets/Talents/Limealicious/minions/minion_1.png";
 
 export const MinionComponent: React.FC<ProfileProp> = ({profile}) => {
     return (
@@ -8,7 +7,7 @@ export const MinionComponent: React.FC<ProfileProp> = ({profile}) => {
             {profile.images.map(image =>
                 <img
                     key={image.id}
-                    src={minionLogo}
+                    src={"src/assets/Talents/"+profile.theme+"/minions/minion_1.png"}
                     alt="Random"
                     className={"fade_in"}
                     style={{

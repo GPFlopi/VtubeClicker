@@ -38,7 +38,7 @@ export interface ItemListProps {
     items: string[];
     box_top:string;
     cont_top:string;
-    theme:React.Dispatch<React.SetStateAction<string>>
+    profile: Profile;
 }
 
 // export interface upgradePreps{

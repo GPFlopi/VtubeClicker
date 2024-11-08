@@ -9,8 +9,10 @@ export class Profile{
     private _TotalCount: number;
     private _incNumber: number;
     private _autoClickNum: number | undefined;
+    private _theme:string | undefined;
+    private setTheme: React.Dispatch<React.SetStateAction<string>>;
 
-    private _talents:string[]=["Maid Mint","Limealicious","Neuro","Evil","Shoomimi", "Elia Stellaria","Cecilia Immergreen", "PirateSoftware"];
+    private _talents:string[]=["MaidMint","Limealicious","Neuro","Evil","Shoomimi", "EliaStellaria","CeciliaImmergreen", "PirateSoftware"];
     private _cometics:string[]=["Happy","Sad","Evil","Coomer","Excited","Thinking"];
     /*
     *   Upgrade Name  -  upgrade cost  - click/autoclick increase - enables
@@ -35,12 +37,16 @@ export class Profile{
 
     constructor(images:minionImageData[],
                 setImages:React.Dispatch<React.SetStateAction<minionImageData[]>>,
-                setLocalCount:React.Dispatch<React.SetStateAction<number>>){
+                setLocalCount:React.Dispatch<React.SetStateAction<number>>,
+                theme:string | undefined,
+                setTheme:React.Dispatch<React.SetStateAction<string>>){
         this.setLocalCount = setLocalCount;
-        this._Localcount = 0;
-        this._TotalCount = 0;
+        this._Localcount = 1;
+        this._TotalCount = 1;
         this._incNumber = 1;
         this.images=images;
+        this._theme = theme;
+        this.setTheme = setTheme
         this.setImages=setImages;
         this.Calculate()
     }
@@ -52,16 +58,20 @@ export class Profile{
         this._upgrades.forEach((upgrade,index:number) => {
             upgrade[3] = upgrade[1] <= this.Localcount;
 
-            if( (index % 2) == 0)
-                Click_ret += upgrade[2];
-            else
-                Auto_ret += upgrade[2];
+            if(upgrade[3]) {
+                if ((index % 2) == 0)
+                    Click_ret += upgrade[2];
+                else
+                    Auto_ret += upgrade[2];
+            }
         })
 
         this._autoClickNum = Math.ceil(Auto_ret);
         this._incNumber = Math.ceil(Click_ret);
         this._Localcount = Math.ceil(this._Localcount);
         this._TotalCount = Math.ceil(this._TotalCount);
+
+        // console.log(this.Localcount)
 
     }
 
@@ -75,8 +85,17 @@ export class Profile{
         this.setLocalCount(this._Localcount);
     }
 
+    setCurrentTheme(newTheme:string){
+        this._theme = newTheme;
+        this.setTheme(this._theme);
+    }
+
 //region getter-setter
 
+
+    get theme(): string | undefined {
+        return this._theme;
+    }
 
     get incNumber(): number {
         return this._incNumber;

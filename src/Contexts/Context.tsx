@@ -9,15 +9,15 @@ import {minionImageData} from "../interfaces";
 export const ContextProvider = ({children}:{children: ReactNode}) => {
     const [images, setImages] = useState<minionImageData[]>([]);
     const [,setLocalCount] = useState<number>(0);
-    const [profile,setProfile] = useState(new Profile(images,setImages,setLocalCount));
-    const [,setCurrentTheme] = useState('testTheme');
+    const [CurrentTheme,setCurrentTheme] = useState('Limealicious');
+    const [profile,setProfile] = useState(new Profile(images,setImages,setLocalCount,CurrentTheme,setCurrentTheme));
     profile.images = images;
 
 
     const ret ={
         profile,setProfile,
         images, setImages,
-        setCurrentTheme
+        setCurrentTheme,
     }
 
     return (

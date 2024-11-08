@@ -1,27 +1,27 @@
-import React from "react";
 import * as Intf from "./interfaces.ts"
 import themesData from "./themes.json" assert {type: 'json'};
 import Profile from "./Profile";
-import soundEffect from "./assets/Talents/Limealicious/click.mp3";
 
 
 const themes: Intf.Themes = themesData
 
-export function setTheme(themeName:string,setCurrentTheme:React.Dispatch<React.SetStateAction<string>>){
+export function setTheme(themeName:string,profile:Profile){
     const theme = themes[themeName]; // No more TypeScript error here
     if (theme && theme.colors) {
         Object.keys(theme.colors).forEach((key) => {
             document.documentElement.style.setProperty(`--${key}`, theme.colors[key as keyof typeof theme.colors]);
         });
-        setCurrentTheme(themeName);
+        profile.setCurrentTheme(themeName);
     }
-    // console.log("Theme set:" + themeName)
+     // console.log("Theme set:" + profile.theme)
 };
 
 export function ButtonClicked(profile:Profile){
     profile.incLocalCount()
     SpawnImage(profile)
-    playSound(soundEffect)
+    const temp =  "src/assets/Talents/"+profile.theme+"/click.mp3"
+    console.log(temp)
+    playSound(temp)
 }
 
 const playSound = (song: string | undefined) => {

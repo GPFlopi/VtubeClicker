@@ -1,5 +1,5 @@
 {
-  "Maid Mint": {
+  "MaidMint": {
     "colors": {
       "bg_shadow": "#AFFDDC"
     }
@@ -24,12 +24,12 @@
       "bg_shadow": "#1185A2"
     }
   },
-    "Elia Stellaria": {
+    "EliaStellaria": {
     "colors": {
       "bg_shadow": "#886F97"
     }
   },
-  "Cecilia Immergreen": {
+  "CeciliaImmergreen": {
     "colors": {
       "bg_shadow": "#70DD80"
     }

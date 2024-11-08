@@ -3,15 +3,15 @@ import MinionComponent from "./MinionComponent";
 import MainButtonComponent from "./MainButtonComponent";
 import UpgradeComponent from "./UpgradeComponent";
 import useProfileContext from "../Contexts/useProfileContext";
-import BackgroundMusic from "./BackgroundMusic";
+// import BackgroundMusic from "./BackgroundMusic";
 
 const MainComponent = () => {
-    const {profile, setCurrentTheme} = useProfileContext();
+    const {profile} = useProfileContext();
 
     return (
         <>
-            <ListDropDownComponent items={profile.talents} box_top={'3%'} cont_top={'7%'} theme={setCurrentTheme}/>
-            <ListDropDownComponent items={profile.cometics} box_top={'46%'} cont_top={'50%'} theme={setCurrentTheme}/>
+            <ListDropDownComponent items={profile.talents} box_top={'3%'} cont_top={'7%'} profile={profile}/>
+            <ListDropDownComponent items={profile.cometics} box_top={'46%'} cont_top={'50%'} profile={profile}/>
             <MinionComponent profile={profile}/>
             {/*<BackgroundMusic/>*/}
             <MainButtonComponent profile={profile}/>
@@ -25,13 +25,10 @@ const MainComponent = () => {
                     <br/>
                     viewers/click - {profile.incNumber}
                     <br/>
+                    {/*{profile.theme}*/}
+                    {/*<br/>*/}
+
                 </label>
-                {/*<button onClick={*/}
-                {/*    () => {*/}
-                {/*        profile.upgrades[2][2]++*/}
-                {/*    }*/}
-                {/*}>Test button*/}
-                {/*</button>*/}
                 Total Clicks: {Math.ceil(profile.TotalCount)}
             </div>
         </>
