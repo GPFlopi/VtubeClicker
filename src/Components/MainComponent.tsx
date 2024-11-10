@@ -11,7 +11,7 @@ const MainComponent = () => {
     return (
         <>
             <ListDropDownComponent items={profile.talents} box_top={'3%'} cont_top={'7%'} profile={profile}/>
-            <ListDropDownComponent items={profile.cometics} box_top={'46%'} cont_top={'50%'} profile={profile}/>
+            {/*<ListDropDownComponent items={profile.cometics} box_top={'46%'} cont_top={'50%'} profile={profile}/>*/}
             <MinionComponent profile={profile}/>
             {/*<BackgroundMusic/>*/}
             <MainButtonComponent profile={profile}/>
@@ -21,7 +21,7 @@ const MainComponent = () => {
             </div>
             <div className={"total-count"}>
                 <label>
-                    viewers/minute - {profile.autoClickNum}
+                    viewers/sec - {profile.autoClickNum}
                     <br/>
                     viewers/click - {profile.incNumber}
                     <br/>

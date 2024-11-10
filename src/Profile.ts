@@ -12,22 +12,22 @@ export class Profile{
     private _theme:string | undefined;
     private setTheme: React.Dispatch<React.SetStateAction<string>>;
 
-    private _talents:string[]=["MaidMint","Limealicious","Neuro","Evil","Shoomimi", "EliaStellaria","CeciliaImmergreen", "PirateSoftware"];
+    private _talents:string[]=["MaidMint","Limealicious","Shoomimi","CeciliaImmergreen", "PirateSoftware"];
     private _cometics:string[]=["Happy","Sad","Evil","Coomer","Excited","Thinking"];
     /*
-    *   Upgrade Name  -  upgrade cost  - click/autoclick increase - enables
+    *   Upgrade Name  -  upgrade cost  - click/autoclick increase - enables - unlocked
     * */
-    private _upgrades:[string, number,number, boolean][]=[
-        ["Start stream\n",1,1,false],
-        ["Set up a schedule\n",1,1,false],
-        ["Make 'cute' noises\n",10,1,false],
-        ["Get new emotes\n",10,1,false],
-        ["Handcam stream\n",50,1,false],
-        ["Upgrade PC\n",50,1,false],
-        ["Do a collab\n",150,1,false],
-        ["Get a 3D model\n",150,1,false],
-        ["3D model stream\n",500,1,false],
-        ["Do a Subathon\n",500,1,false],
+    private _upgrades:[string, number,number, boolean,boolean][]=[
+        ["Start stream\n",1,1,false,true],
+        ["Set up a schedule\n",1,1,false,true],
+        ["Make 'cute' noises\n",100,10,false,false],
+        ["Get new emotes\n",100,10,false,false],
+        ["Handcam stream\n",500,20,false,false],
+        ["Upgrade PC\n",500,20,false,false],
+        ["Do a collab\n",1500,50,false,false],
+        ["Get a 3D model\n",1500,50,false,false],
+        ["3D model stream\n",5000,100,false,false],
+        ["Do a Subathon\n",5000,100,false,false],
     ];
 
     public images: minionImageData[];
@@ -58,7 +58,7 @@ export class Profile{
         this._upgrades.forEach((upgrade,index:number) => {
             upgrade[3] = upgrade[1] <= this.Localcount;
 
-            if(upgrade[3]) {
+            if(upgrade[4]) {
                 if ((index % 2) == 0)
                     Click_ret += upgrade[2];
                 else
@@ -113,7 +113,7 @@ export class Profile{
         return this._cometics;
     }
 
-    get upgrades(): [string, number,number,boolean][] {
+    get upgrades(): [string, number,number,boolean,boolean][] {
         return this._upgrades;
     }
 

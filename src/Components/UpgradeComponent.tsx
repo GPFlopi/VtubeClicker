@@ -20,11 +20,14 @@ export const UpgradeComponent: React.FC<ProfileProp> = ({profile}) => {
         <div>
             <div className="card">
                 <div className="bg">
-                    {profile.upgrades.map((item: [string, number,number,boolean], index: number) => (
+                    {profile.upgrades.map((item: [string, number,number,boolean,boolean], index: number) => (
                         <StyledWrapper key={index}>
                             <button key={index + 1} onClick={() => {
                                     if((profile.Localcount - item[1]) >= 0 && item[3]){
                                         profile.decLocalCount(Math.ceil(item[1]));
+
+                                        if(!item[4])
+                                            profile.upgrades[profile.upgrades.indexOf(item)][4] = true
 
                                         item[1] *= 1.2;
                                         item[2] *= 1.2;

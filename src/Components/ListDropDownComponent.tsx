@@ -6,8 +6,9 @@ import "../CSS/Dropdown.css"
 export const ListDropDownComponent:React.FC<ItemListProps> = ({items,box_top,cont_top,profile}) => {
     return (
         <>
+
             <input className="checkbox" style={{ top: box_top }} type="checkbox" id="toggleCheckbox"/>
-            <label className="dropLabel" htmlFor="toggleCheckbox"></label>
+            <label className="dropLabel" htmlFor="toggleCheckbox">Vtubers</label>
 
             <div className="dropdown-content" style={{ top: cont_top }}>
                 {items.map((item:string, index:number) => (
